@@ -2,7 +2,7 @@
 A group analysis of historic earthquake data
 
 The queries are in MySQL syntax to extract insightful information from the given data.
-The data is included in csv format 
+The data is included in csv format.
 
 ## Overview
 Earthquakes are natural vibrations caused by sudden movements in the Earth’s crust, the Earth’s thin outer layer. 
@@ -13,7 +13,7 @@ Earthquakes are natural vibrations caused by sudden movements in the Earth’s c
 -	Explosion
 
 ### Tables created to enhance analysis
-- DISTINCT PLACE TABLE: A table of all distinct locations with 1 or more earthquake occurrences from the data provided
+- DISTINCT PLACE TABLE: A table of all distinct places with 1 or more earthquake occurrences from the data provided.
 ```
 DROP TABLE IF EXISTS places_table;
 CREATE TABLE places_table
@@ -24,7 +24,7 @@ COUNT(place) AS Earthquake_count,
 MAX(magnitude), MIN(magnitude), MAX(depth), MIN(depth)
 FROM earthquake_analysis GROUP BY(place);
 ```
-- EARTHQUAKES BY DECADE: Earthquakes are classified by the decade they occured
+- EARTHQUAKES BY DECADE: A table of earthquakes classified by the decade they occurred.
 ```
 DROP TABLE IF EXISTS decades_table;
 CREATE TABLE decades_table
@@ -46,7 +46,7 @@ END
 AS Decade
 FROM decades_table;
 ```
-- EARTHQUAKES BY YEAR: Earthquakes are classified by the years the occured
+- EARTHQUAKES BY YEAR: A table of earthquakes classified by the year they occurred.
 ```
 DROP TABLE IF EXISTS years_table;
 CREATE TABLE years_table
@@ -58,7 +58,7 @@ MAX(magnitude), MIN(magnitude), MAX(depth), MIN(depth)
 FROM earthquake_analysis
 GROUP BY EXTRACT(YEAR FROM occurred_on); 
 ```
-- EARTHQUAKES BY MONTH
+- EARTHQUAKES BY MONTH: A table of earthquakes classified by the month they occurred.
 ```
 DROP TABLE IF EXISTS months_table;
 CREATE TABLE months_table
@@ -70,7 +70,7 @@ MAX(magnitude), MIN(magnitude), MAX(depth), MIN(depth)
 FROM earthquake_analysis
 GROUP BY EXTRACT(MONTH FROM occurred_on);
 ```
-- EARTHQUAKES BY HOUR
+- EARTHQUAKES BY HOUR: A table of earthquakes classified by the hour of the day they occurred.
 ```
 DROP TABLE IF EXISTS times_table;
 CREATE TABLE times_table
@@ -84,7 +84,7 @@ GROUP BY EXTRACT(HOUR FROM occurred_on)
 ORDER BY HOUR; 
 ```
 
-- EARTHQUAKES BY MAGNITUDE RANGE
+- EARTHQUAKES BY MAGNITUDE RANGE: A table of earthquakes classified by the magnitude range.
 ```
 DROP TABLE IF EXISTS magnitudes_table;
 CREATE TABLE magnitudes_table
@@ -109,7 +109,8 @@ GROUP BY magnitude_range;
 
 #### These tables will us allow us to ask interesting questions like:
 - Does the time of the day affect the magnitude of earthquakes?
-- Which decade did earthquakes occur more frequently and do they vary with phenomena like climate change?
+- Which decade experienced the most number of earthquakes?
+- Do they vary with phenomena like climate change?
 - Are earthquakes seasonal?
 - How does the frequency of earthquakes in a place vary with magnitude? (Does high frequency of earthquakes in a location infer low magnitudes)
 
